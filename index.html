@@ -374,24 +374,24 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-    /* شريط التبويبات للأقسام الثابتة والديناميكية */
+    /* شريط التبويبات للأقسام الثابتة والديناميكية مع شريط تمرير أعلى */
+    #tabs-wrapper {
+      overflow-x: auto;
+      margin-bottom: 20px;
+      transform: rotateX(180deg);
+    }
     #tabs {
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      margin-bottom: 20px;
+      transform: rotateX(180deg);
     }
-    /* إخفاء شريط التمرير في Webkit */
-    #tabs::-webkit-scrollbar {
+    /* إزالة قاعدة اخفاء شريط التمرير */
+    /*#tabs::-webkit-scrollbar {
       display: none;
-    }
-    /* على الشاشات الكبيرة نركز الأزرار */
-    @media (min-width: 768px) {
-      #tabs {
-        justify-content: center;
-      }
-    }
+    } */
+    
     #tabs .tab {
       background: transparent;
       border: 2px solid var(--primary-color);
@@ -852,12 +852,14 @@
             <input type="text" id="smartSearch" placeholder="ابحث عن القسم المناسب..."/>
             <div id="searchResults"></div>
           </div>
-          <!-- شريط التبويبات للأقسام الثابتة والديناميكية -->
-          <div id="tabs">
-            <button class="tab active" data-target="general">عامة</button>
-            <button class="tab" data-target="men">للرجال</button>
-            <button class="tab" data-target="women">للنساء</button>
-            <button class="tab" data-target="other">اخرى</button>
+          <!-- شريط التبويبات للأقسام الثابتة والديناميكية مع شريط تمرير أعلى -->
+          <div id="tabs-wrapper">
+            <div id="tabs">
+              <button class="tab active" data-target="general">عامة</button>
+              <button class="tab" data-target="men">للرجال</button>
+              <button class="tab" data-target="women">للنساء</button>
+              <button class="tab" data-target="other">اخرى</button>
+            </div>
           </div>
           <div id="sectionContent">
             <!-- الأقسام الثابتة -->
@@ -1210,6 +1212,8 @@
               group.classList.remove("active");
             });
             document.getElementById(target).classList.add("active");
+            // تمرير التبويب الذي تم الضغط عليه ليصبح أول زر ظاهر داخل القائمة
+            this.scrollIntoView({ behavior: "smooth", inline: "start" });
           });
         });
       }
@@ -1250,6 +1254,7 @@
                     group.classList.remove("active");
                   });
                   document.getElementById(dataTarget).classList.add("active");
+                  this.scrollIntoView({ behavior: "smooth", inline: "start" });
                 });
               }
             }
@@ -1343,7 +1348,7 @@
       document.getElementById("shopNow").addEventListener("click", function () {
         document.getElementById("landingSection").style.display = "none";
         document.getElementById("sectionsSection").style.display = "block";
-        // يمكن الاحتفاظ بإنشاء أزرار الأقسام الأصلية إذا لزم الأمر:
+        // إنشاء أزرار الأقسام الأصلية
         createSectionButtons("generalSections", generalSectionsArray);
         createSectionButtons("menSections", mensSections);
         createSectionButtons("womenSections", womensSections);
