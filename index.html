@@ -387,10 +387,6 @@
       -webkit-overflow-scrolling: touch;
       transform: rotateX(180deg);
     }
-    /* إزالة قاعدة اخفاء شريط التمرير */
-    /*#tabs::-webkit-scrollbar {
-      display: none;
-    } */
     
     #tabs .tab {
       background: transparent;
@@ -552,13 +548,11 @@
       overflow: auto;
       background-color: rgba(0,0,139,0.8);
     }
+    /* قواعد عامة للمودال */
     .modal-content {
       background-color: #fff;
-      margin: 8% auto;
-      padding: 20px;
       border-radius: 15px;
-      width: 90%;
-      max-width: 800px;
+      padding: 20px;
       position: relative;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       animation: fadeIn 0.5s;
@@ -619,63 +613,72 @@
       animation: spin 1s linear infinite;
     }
     
-    /* Desktop and large screens: أيقونة الزر تكبر بنسبة *3 */
-    #luckyWheelBtn img {
-      transform: scale(3);
-      transform-origin: center;
+    /* تعديل خاص بنموذج عجلة الحظ */
+    /* نجعل مودال عجلة الحظ يظهر في وسط الشاشة باستخدام Flexbox */
+    #luckyWheelModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,139,0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 2100;
     }
-    
-    /* TABLET STYLES (min-width:768px and max-width:1023px) */
-    @media (min-width: 768px) and (max-width: 1023px) {
-      #headerSection { padding: 8px 0; }
-      #storeLogo { max-height: 40px; }
-      #landing h1 { font-size: 3em; }
-      .phrase { font-size: 1.3em; }
-      .description { font-size: 1.1em; }
-      #shopNow { font-size: 18px; padding: 12px 30px; }
-      .section-button { width: 130px; height: 130px; }
-      #tabs .tab { font-size: 15px; padding: 9px 18px; }
+    /* إزالة الهامش الافتراضي للمحتوى داخل مودال عجلة الحظ */
+    #luckyWheelModal .modal-content {
+      margin: 0;
     }
-    
-    /* MOBILE STYLES (max-width:767px): أيقونة الزر تكبر بنسبة *4 */
-    @media (max-width: 767px) {
-      #headerSection {
-        flex-direction: row;
-        align-items: center;
-        padding: 5px 10px;
-      }
-      #headerContent {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-      #headerContent .header-left {
-        flex: 1;
+    /* على جميع الأجهزة، يتم عرض شاشة عجلة الحظ بحجم ثابت 781×667 */
+    @media (min-width: 768px) {
+      #luckyWheelModal .modal-content {
+        width: 781px;
+        height: 667px;
         display: flex;
-        justify-content: flex-start;
-      }
-      #headerContent .header-center {
-        flex: 1;
-        display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
       }
-      #headerContent .header-right {
-        flex: 1;
+      #luckyWheelModal .modal-content iframe {
+        width: 100%;
+        height: calc(100% - 50px); /* تخصيص مساحة للزر */
+      }
+    }
+    @media (max-width: 767px) {
+      #luckyWheelModal .modal-content {
+        width: 781px;
+        height: 667px;
+        max-width: 100%;
+        max-height: 100%;
         display: flex;
-        justify-content: flex-end;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
-      #storeLogo { display: none; }
-      #orderProductsBtn, #joinTeamBtn, .language-toggle {
-        padding: 4px 6px;
-        font-size: 12px;
-        margin-left: 5px;
+      #luckyWheelModal .modal-content iframe {
+        width: 100%;
+        height: calc(100% - 50px);
       }
-      .social-btn {
-        width: 24px;
-        height: 24px;
-      }
-      /* تكبير أيقونة زر عجلة الحظ على الجوال بنسبة *4 */
+    }
+    /* زر الإغلاق الخاص بعجلة الحظ */
+    #luckyWheelModal .close-lucky-btn {
+      background-color: #8b0000;
+      border: none;
+      color: #fff;
+      padding: 8px 12px;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* تكبير أيقونة زر عجلة الحظ على الجوال بنسبة *4 */
+    @media (max-width: 767px) {
       #luckyWheelBtn img {
         transform: scale(4) !important;
       }
@@ -692,6 +695,20 @@
     }
     html.dark-mode #smartSearch::placeholder {
       color: #fff;
+    }
+    
+    /* تعديلات خاصة بأجهزة الحاسوب والشاشات الكبيرة */
+    @media (min-width: 1024px) {
+      /* زيادة حجم زر عجلة الحظ على الشاشات الكبيرة */
+      #luckyWheelBtn {
+        width: 60px !important;
+        height: 60px !important;
+      }
+      /* ضبط حجم شاشة عجلة الحظ لتظهر بشكل متناسق وواضح على الحاسوب (اصغر حجماً) */
+      #luckyWheelModal .modal-content {
+        width: 700px;
+        height: 600px;
+      }
     }
   </style>
   
@@ -917,6 +934,9 @@
       <button id="productModalCloseBtn" class="close-btn" onclick="closeProductModal()">Close</button>
     </div>
   </div>
+  
+  <!-- Modal for Lucky Wheel -->
+  <!-- سيتم إضافته ديناميكيًا عبر دالة openLuckyWheelModal() -->
   
   <!-- JavaScript Logic -->
   <script>
@@ -1416,12 +1436,15 @@
           <div id="luckyWheelModal" class="modal">
             <div class="modal-content">
               <span class="close" onclick="closeLuckyWheelModal()">&times;</span>
-              <iframe src="https://mulberryteam.github.io/mulberrywheel/" style="width:100%; height:500px; border:none; border-radius:8px;"></iframe>
+              <iframe src="https://mulberryteam.github.io/mulberrywheel/" frameborder="0" style="border:none; border-radius:8px;"></iframe>
+              <button class="close-lucky-btn" onclick="closeLuckyWheelModal()">
+                <i class="fa fa-sign-out-alt"></i> خروج
+              </button>
             </div>
           </div>
         `;
         document.body.insertAdjacentHTML('beforeend', modalHtml);
-        document.getElementById("luckyWheelModal").style.display = "block";
+        document.getElementById("luckyWheelModal").style.display = "flex";
       };
 
       window.closeLuckyWheelModal = function() {
