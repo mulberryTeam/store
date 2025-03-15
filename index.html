@@ -748,31 +748,6 @@
       });
     }
   </script>
-  
-  <!-- Script to generate circular favicon -->
-  <script>
-    (function() {
-      var canvas = document.createElement('canvas');
-      canvas.width = 64;
-      canvas.height = 64;
-      var ctx = canvas.getContext('2d');
-      var img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = function() {
-        ctx.beginPath();
-        ctx.arc(32, 32, 32, 0, 2 * Math.PI);
-        ctx.closePath();
-        ctx.clip();
-        ctx.drawImage(img, 0, 0, 64, 64);
-        var link = document.createElement('link');
-        link.rel = 'icon';
-        link.type = 'image/png';
-        link.href = canvas.toDataURL('image/png');
-        document.head.appendChild(link);
-      };
-      img.src = "https://i.ibb.co/DfgPK26x/d3faeae71c55.jpg";
-    })();
-  </script>
 </head>
 <body>
   <!-- Full-screen Background Video -->
@@ -1008,6 +983,7 @@
         "العناية بالقدم": "Foot Care",
         "مزيلات عرق للرجال": "Men's Deodorants",
         "عطور": "Perfumes",
+        "عطور للرجال": "Perfumes for Men",
         "عطور للنساء": "Women's Perfumes",
         "تفتيح": "Skin Brightening",
         "منتجات تفتيح الجسم": "Body Brightening",
@@ -1401,7 +1377,7 @@
           document.querySelectorAll("#tabs .tab")[3].innerText = "Other";
           document.querySelector("#extendedInfo p").innerText = "About Mulberry Store & Team";
           document.getElementById("joinTeamBtn").innerText = "Join the Mulberry Team";
-          document.getElementById("orderProductsBtn").innerText = "Order Products";
+          document.getElementById("orderProductsBtn").innerText = "Request Consultation";
         } else {
           currentLanguage = "ar";
           document.documentElement.lang = "ar";
@@ -1417,7 +1393,7 @@
           document.querySelectorAll("#tabs .tab")[3].innerText = "اخرى";
           document.querySelector("#extendedInfo p").innerText = "حول Mulberry Store وفريق العمل";
           document.getElementById("joinTeamBtn").innerText = "انضم إلى Mulberry Team";
-          document.getElementById("orderProductsBtn").innerText = "Order Products";
+          document.getElementById("orderProductsBtn").innerText = "اطلب استشارة";
         }
         document.querySelector(".language-toggle").innerText = currentLanguage === "en" ? "AR" : "EN";
         document.getElementById("smartSearch").value = "";
