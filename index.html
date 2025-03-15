@@ -615,7 +615,7 @@
       animation: spin 1s linear infinite;
     }
     
-    /* Desktop and large screens: أيقونة الزر تكبر بنسبة *3 */
+    /* Desktop and large screens: تكبير زر عجلة الحظ */
     #luckyWheelBtn img {
       transform: scale(3);
       transform-origin: center;
@@ -633,7 +633,7 @@
       #tabs .tab { font-size: 15px; padding: 9px 18px; }
     }
     
-    /* MOBILE STYLES (max-width:767px): أيقونة الزر تكبر بنسبة *4 */
+    /* MOBILE STYLES (max-width:767px) */
     @media (max-width: 767px) {
       #headerSection {
         flex-direction: row;
@@ -691,11 +691,11 @@
     }
     
     /* ========== تعديلات خاصة بنموذج عجلة الحظ ========== */
-    /* على الأجهزة الكبيرة: محتوى النافذة مربع */
+    /* على الأجهزة الكبيرة: عرض ثابت 781×667 */
     @media (min-width: 768px) {
       #luckyWheelModal .modal-content {
-        width: 500px;
-        height: 500px;
+        width: 781px;
+        height: 667px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -703,10 +703,10 @@
       }
       #luckyWheelModal .modal-content iframe {
         width: 100%;
-        height: calc(100% - 50px); /* مساحة للزر */
+        height: calc(100% - 50px);
       }
     }
-    /* على الأجهزة الصغيرة: عرض ثابت 781×667 */
+    /* على الأجهزة الصغيرة: العرض يبقى 781×667 مع استخدام max-width و max-height */
     @media (max-width: 767px) {
       #luckyWheelModal .modal-content {
         width: 781px;
