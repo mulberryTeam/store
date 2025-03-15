@@ -387,10 +387,6 @@
       -webkit-overflow-scrolling: touch;
       transform: rotateX(180deg);
     }
-    /* إزالة قاعدة اخفاء شريط التمرير */
-    /*#tabs::-webkit-scrollbar {
-      display: none;
-    } */
     
     #tabs .tab {
       background: transparent;
@@ -692,6 +688,54 @@
     }
     html.dark-mode #smartSearch::placeholder {
       color: #fff;
+    }
+    
+    /* ========== تعديلات خاصة بنموذج عجلة الحظ ========== */
+    /* على الأجهزة الكبيرة: محتوى النافذة مربع */
+    @media (min-width: 768px) {
+      #luckyWheelModal .modal-content {
+        width: 500px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #luckyWheelModal .modal-content iframe {
+        width: 100%;
+        height: calc(100% - 50px); /* مساحة للزر */
+      }
+    }
+    /* على الأجهزة الصغيرة: عرض ثابت 781×667 */
+    @media (max-width: 767px) {
+      #luckyWheelModal .modal-content {
+        width: 781px;
+        height: 667px;
+        max-width: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #luckyWheelModal .modal-content iframe {
+        width: 100%;
+        height: calc(100% - 50px);
+      }
+    }
+    /* زر الإغلاق الخاص بعجلة الحظ */
+    #luckyWheelModal .close-lucky-btn {
+      background-color: #8b0000;
+      border: none;
+      color: #fff;
+      padding: 8px 12px;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
   </style>
   
@@ -1416,7 +1460,10 @@
           <div id="luckyWheelModal" class="modal">
             <div class="modal-content">
               <span class="close" onclick="closeLuckyWheelModal()">&times;</span>
-              <iframe src="https://mulberryteam.github.io/mulberrywheel/" style="width:100%; height:500px; border:none; border-radius:8px;"></iframe>
+              <iframe src="https://mulberryteam.github.io/mulberrywheel/" frameborder="0" style="border:none; border-radius:8px;"></iframe>
+              <button class="close-lucky-btn" onclick="closeLuckyWheelModal()">
+                <i class="fa fa-sign-out-alt"></i> خروج
+              </button>
             </div>
           </div>
         `;
