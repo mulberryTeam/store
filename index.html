@@ -14,6 +14,60 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVnKp3yY4kSg+2e1ZxZ9XrpYB0+8L2TNnpqmKEz7qR3V7tUj3+npBbTzvn4jn/Es9vXbm2hCk2wFVu8jz0a8Ug==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <style>
+
+
+
+.product-buttons-container {
+  display: flex;
+  gap: 20px;               /* مسافة بين الأزرار */
+  justify-content: center; /* محاذاة الأزرار في الوسط */
+  flex-wrap: wrap;         /* لفّ الأزرار على عدة أسطر إذا ضاقت المساحة */
+}
+
+.product-button {
+  position: relative;
+  width: 160px;            /* عرض الزر */
+  height: 160px;           /* ارتفاع الزر */
+  border-radius: 20px;     /* زوايا منحنية */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل خفيف حول الزر */
+
+  overflow: hidden;
+  text-decoration: none;   /* إزالة التسطير الافتراضي للروابط */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-button .img-wrapper {
+  flex: 1;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-button .img-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.3); /* طبقة بيضاء شفافة 30% */
+}
+
+.product-button .btn-label {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;             /* اختر اللون الذي يناسب تصميمك */
+}
+
+
+
+
+
+
+
+
+
+
     :root {
       --primary-color: #0000cd; /* Blue */
       --secondary-color: #800080; /* Purple */
@@ -244,12 +298,7 @@
     }
     #headerContent button:hover { transform: scale(1.05); }
     
-    /* Language Toggle */
-    .language-toggle {
-      background: linear-gradient(45deg, var(--accent-language-1), var(--accent-language-2));
-      font-size: 14px;
-      font-weight: 600;
-    }
+   
     
     /* Order Products Button - تم تغيير النص داخل الزر إلى "اطلب استشارة" */
     #orderProductsBtn {
@@ -317,8 +366,10 @@
       font-family: var(--body-font);
       font-style: italic;
       margin: 10px 0;
+margin-top: 0;
+ margin-bottom: 15px;
       color: #fff;
-      font-size: 1.4em;
+      font-size: 1;
       font-weight: 600;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
     }
@@ -333,17 +384,7 @@
       font-family: var(--extra-font);
       text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
     }
-    #shopNow {
-      font-size: 20px;
-      padding: 14px 35px;
-      margin-top: 40px;
-      background: var(--button-bg);
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      transition: transform 0.3s;
-      font-family: var(--extra-font);
-    }
+    
     #shopNow:hover { transform: scale(1.05); }
     
     /* Extended Sections (Products Display) */
@@ -676,6 +717,12 @@
       align-items: center;
       gap: 5px;
     }
+
+
+
+
+
+
     
     /* تكبير أيقونة زر عجلة الحظ على الجوال بنسبة *4 */
     @media (max-width: 767px) {
@@ -710,6 +757,144 @@
         height: 600px;
       }
     }
+
+
+
+/* رفع العنوان والنصوص فوق الأزرار */
+.section-title {
+  margin-top: 10px;    /* قلّلت المساحة العلوية للرفع */
+  margin-bottom: 5px;  /* قلّلت المساحة السفلية */
+font-size: 1rem;
+}
+
+/* رفع مجموعة الأزرار نحو الأعلى */
+.product-buttons-container {
+  margin-top: -15px;   /* قيمة سالبة لرفع الأزرار؛ جرّب -10px أو -30px للوصول للموضع الأمثل */
+}
+
+
+
+
+
+.advertisingView {
+  margin: 60px 0 0 0;            /* 60px فراغ عُلوي على سطح المكتب */
+  width: 100vw;
+  height: calc(100vh - 60px);    /* ارتفاع ناقص الفراغ العلوي */
+  overflow-y: auto;             /* سمّح بالتمرير العمودي */
+  background-size: contain;      /* اعرض الصورة بالكامل بدون قص */
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* ضروري ليتحرك مع التمرير */
+  position: relative;            /* حافظ على التدفق الطبيعي للوثيقة */
+  z-index: 1000;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .product-buttons-container {
+    display: flex;
+    width: 100%;                   /* عرض الحاوية كامل الشاشة */
+    padding: 0;                    /* إزالة أي حشوة جانبية */
+    justify-content: space-between;/* يوزّع الأزرار من طرف لطرف */
+    gap: 4px;                      /* مسافة صغيرة ثابتة بين الأزرر */
+    box-sizing: border-box;        /* لتضمين الهامش والحشوة ضمن الـ 100% */
+  }
+
+  .product-button {
+    flex: 1.2;                     /* كل زر يكبر بنسبة 1.2 فليكسيبل */
+    margin: 0;                     /* لا هامش إضافي */
+    aspect-ratio: 0.50;               /* يحافظ على المربع */
+    max-width: none;               /* يلغي أية حدود عرض سابقة */
+  }
+.product-button span {
+    font-size: 12px !important; /* يمكنك التعديل مثلاً 11px أو 10px حسب ما يناسبك */
+  }
+  .advertisingView {
+    margin-top: 120px;                       /* 120px على الموبايل */
+    height: calc(100vh - 120px);             /* ارتفاع مخصوم منه الفراغ */
+  }
+}
+
+
+
+
+
+
+
+/* زر الرجوع الخاص بواجهة الإعلان */
+#sectionsSection.advertising-view-active .back-container {
+  position: fixed;      /* ثبّته بالنسبة للنافذة */
+  bottom: 20px;         /* 20px من الأسفل */
+  left: 20px;           /* 20px من اليسار */
+  z-index: 2001;        /* فوق باقي العناصر */
+  pointer-events: auto; /* تأكد أنه يتلقى الأحداث */
+}
+#sectionsSection.advertising-view-active .back-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* زر الرجوع داخل sectionsSection */
+#sectionsSection .back-container {
+  position: absolute;  /* ثبّته بالنسبة لحاوية sectionsSection */
+  top: 20px;           /* 20px من الأعلى */
+  left: 20px;          /* 20px من اليسار */
+  z-index: 1001;       /* فوق محتوى الإعلان */
+}
+#sectionsSection .back-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* جعل لون السهم في زر الرجوع أحمر */
+#sectionsSection .back-container svg path {
+  fill: red;
+}
+
+
+
+
+
+
+
+/* زر الرجوع داخل advertisingSection */
+#advertisingSection .back-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+}
+#advertisingSection .back-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+/* خلفية بيضاء لقسم الإعلان وجلسات التصوير */
+#advertisingSection {
+  background-color: #fff;
+  width: 100vw;
+  height: calc(100vh - var(--header-height, 60px)); /* إذا لديك متغير لارتفاع الهيدر؛ وإلا استخدم قيمة ثابتة */
+  overflow-y: auto;
+  position: relative;
+}
+
+
+
+
+
+
   </style>
   
   <!-- Firebase SDK -->
@@ -747,12 +932,33 @@
         console.log(data);
       });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </script>
 </head>
 <body>
   <!-- Full-screen Background Video -->
   <video id="backgroundVideo" autoplay muted loop playsinline>
-    <source src="https://www.pexels.com/download/video/6706925/">
+    <source src="https://screenpal.com/content/video/download/cThn2dnQrOw">
     Your browser does not support the video tag.
   </video>
   
@@ -791,7 +997,7 @@
         </div>
         <!-- Header Right: Translation and Join Team Buttons -->
         <div class="cell header-right" style="display: flex; justify-content: flex-end;">
-          <button class="language-toggle" onclick="toggleLanguage()">EN</button>
+          
           <button id="joinTeamBtn" onclick="window.open('https://forms.gle/5tXHFwsgF6kycYG7A','_blank')">انضم إلى Mulberry Team</button>
         </div>
       </div>
@@ -811,7 +1017,39 @@
         <h1>Mulberry Store</h1>
         <p class="phrase">"حيث يلتقي الذوق الرفيع مع تجربة التسوق العصرية."</p>
         <p class="phrase">"اكتشف تشكيلتنا الكاملة والمميزة."</p>
-        <button id="shopNow">عرض المنتجات</button>
+        
+  <div class="product-buttons-container">
+  
+<!-- زر لوازم المشاريع كبروكود -->
+<a id="projectSuppliesBtn" href="javascript:void(0)" class="product-button">
+  <div class="img-wrapper" style="background-image: url('https://mhhar.com/uploads/vendor/products/thumb/16162.jpg');"></div>
+  <span class="btn-label">لوازم المشاريع</span>
+</a>
+<a class="product-button" id="shopNow" href="javascript:void(0)">
+    <div class="img-wrapper" style="background-image: url('https://cdn.salla.sa/dogdz/48u2clVoA05TEJ4Lg7KI2L36Ctp9hKk7UDn6y6o3.jpg');"></div>
+    <span class="btn-label">.منتجات. .العناية.</span>
+  </a>
+<a id="advertisingBtn" href="javascript:void(0)" class="product-button">
+  <div class="img-wrapper"
+       style="background-image: url('https://v-mediapro.com/wp-content/uploads/2024/03/%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D8%A7%D9%86-1024x682.png');">
+  </div>
+  <span class="btn-label">الإعلان وجلسات التصوير</span>
+</a>
+
+
+
+<!-- زر أشهر العطور -->
+<a id="popularPerfumesBtn" href="javascript:void(0)" class="product-button">
+  <div class="img-wrapper" style="background-image: url('https://cdn-1.hosting.anfa.media/upload/q_50/https://waheteter.com/wp-content/uploads/2023/08/Jean-Paul-Gaultier-Le-Male-Elixir2.jpg');"></div>
+  <span class="btn-label">.أشهر. .العطور.</span>
+</a>
+
+
+
+
+</div>
+ 
+
         <div class="description" id="storeDescription">
           <p>
             مرحبًا بكم في Mulberry Store – المتجر الرائد الذي يقدم أفضل منتجات العناية بالبشرة، العناية الشخصية، باقات الهدايا والعطور الفاخرة.
@@ -833,6 +1071,18 @@
     <section id="sectionsSection" class="gpd-section" data-anim-type="fadeIn">
       <div class="gpd-container">
         <div id="sections">
+<!-- حاوية عطور -->
+<!-- حاوية مخصّصة لأشهر العطور -->
+<div id="popularPerfumesSection" style="display: none;">
+  <!-- 1) شريط التبويبات -->
+  <div id="popularTabsWrapper" class="tabs-wrapper">
+    <div id="popularTabs" class="tab-list"></div>
+  </div>
+  <!-- 2) حاوية المحتوى لكل تبويب -->
+  <div id="popularTabContent"></div>
+</div>
+
+
           <div class="back-container">
             <button onclick="goBack()">
               <svg viewBox="0 0 24 24">
@@ -880,9 +1130,34 @@
               كما نحرص على خلق تجربة تسوق تفاعلية تجمع بين الأناقة وسهولة الاستخدام.
             </p>
           </div>
+      <!-- حاوية مخصّصة لأشهر العطور -->
+      <div id="popularPerfumesSection" style="display: none;">
+        <div id="popularSections" class="section-buttons"></div>
+      </div>
+
         </div>
       </div>
     </section>
+
+
+
+<!-- قسم خاص بالإعلان وجلسات التصوير -->
+<section id="advertisingSection" class="gpd-section" style="display: none; position: relative; padding: 0; margin: 0;">
+  <div class="back-container">
+    <button id="closeAdvertisingBtn">
+      <svg viewBox="0 0 24 24" width="30" height="30">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="red"/>
+      </svg>
+    </button>
+  </div>
+  <img src="https://i.ibb.co/VWCQzvD3/image.png" alt="إعلان وجلسة تصوير"
+       style="display:block; width:100%; height:auto;"/>
+</section>
+
+
+
+
+
   </main>
   
   <!-- Modal for Product Sections -->
@@ -915,6 +1190,10 @@
   
   <!-- JavaScript Logic -->
   <script>
+let currentView = 'landing';  // القيم المحتملة: 'landing', 'shop', 'project', 'perfumes'
+
+
+
     // نقوم بتعريف كائن لتخزين روابط الأقسام الديناميكية من Firebase
     let firebaseCategoryMap = {};
     
@@ -934,11 +1213,20 @@
     }
     
     window.onload = function() {
+
+
+ 
+
+
+
+
+
+
       const loader = document.getElementById("loader");
       loader.style.opacity = 0;
       setTimeout(() => { loader.style.display = "none"; }, 500);
       
-      let currentLanguage = "ar";
+      
       
       const darkModeBtn = document.getElementById("darkModeBtn");
       const backgroundVideo = document.getElementById("backgroundVideo");
@@ -948,15 +1236,21 @@
         if(document.documentElement.classList.contains("dark-mode")){
           darkModeImg.src = "https://assets.streamlinehq.com/image/private/w_240,h_240,ar_1/f_auto/v1/icons/flash/light-dark-mode-e3gg3irc1eguseoto21y3o.png/light-dark-mode-886e8g3i55i69jhfuguoa2.png?_a=DAJFJtWIZAAC";
           darkModeImg.alt = "Light Mode Toggle";
-          backgroundVideo.querySelector("source").src = "https://www.pexels.com/download/video/19504843/";
+          backgroundVideo.querySelector("source").src = "https://screenpal.com/content/video/download/cThn2dnQrOw";
         } else {
           darkModeImg.src = "https://cdn-icons-png.freepik.com/512/6714/6714978.png";
           darkModeImg.alt = "Dark Mode Toggle";
-          backgroundVideo.querySelector("source").src = "https://www.pexels.com/download/video/6706925/";
+          backgroundVideo.querySelector("source").src = "https://screenpal.com/content/video/download/cThn2dnQrOw";
         }
-        backgroundVideo.load();
+        
+
+
       });
       
+
+
+
+
       window.addEventListener("scroll", function() {
         const header = document.getElementById("headerSection");
         if (window.pageYOffset > 50) {
@@ -966,156 +1260,147 @@
         }
       });
       
-      const sectionTranslations = {
-        "العناية بالجسم": "Body Care",
-        "مرطب للجسم": "Body Moisturizer",
-        "البشرة والوجه": "Skin & Face",
-        "مرطبات وكريمات للوجه": "Face Creams & Moisturizers",
-        "معطر للجسم": "Body Fragrances",
-        "عطر للجسم": "Body Perfume",
-        "مقشرات وملمعات الجسم": "Body Scrubs & Exfoliators",
-        "مستلزمات العناية الشخصية": "Personal Care Essentials",
-        "معالجات وسيروم للوجه": "Facial Treatments & Serums",
-        "العناية باليدين": "Hand Care",
-        "صابون استحمام": "Bath Soap",
-        "منتجات العناية للرجال": "Men's Care Products",
-        "النظافة الشخصية للنساء": "Women's Personal Hygiene",
-        "العناية بالقدم": "Foot Care",
-        "مزيلات عرق للرجال": "Men's Deodorants",
-        "عطور": "Perfumes",
-        "عطور للرجال": "Perfumes for Men",
-        "عطور للنساء": "Women's Perfumes",
-        "تفتيح": "Skin Brightening",
-        "منتجات تفتيح الجسم": "Body Brightening",
-        "مزيلات عرق للنساء": "Women's Deodorants",
-        "العناية بالحامل والمرضعة": "Maternity & Nursing Care",
-        "صابون اليدين": "Hand Soap",
-        "إزالة الشعر": "Hair Removal",
-        "العناية بالفم": "Oral Care",
-        "العناية بالأسنان": "Dental Care",
-        "الوقاية من الشمس والتسمير": "Sun Protection & Tanning",
-        "الوجه": "Face",
-        "أقنعة الوجه": "Face Masks",
-        "منظفات البشرة": "Skin Cleansers",
-        "تقشير البشرة": "Skin Exfoliation",
-        "العناية بالشفاه": "Lip Care",
-        "الشفاه": "Lips",
-        "العناية بالعين": "Eye Care",
-        "تونرات": "Toners",
-        "الرموش": "Lashes",
-        "المكياج": "Makeup",
-        "فيتامينات": "Vitamins",
-        "العناية بالشعر": "Hair Care",
-        "معالجات الشعر": "Hair Treatments",
-        "شامبو": "Shampoo",
-        "منعم الشعر": "Hair Conditioner",
-        "مثبت مكياج": "Makeup Fixer",
-        "سيروم وزيوت للشعر": "Hair Serums & Oils",
-        "عطور للجسم والشعر": "Fragrances for Body & Hair",
-        "شفرات حلاقة الوجه للنساء": "Women's Facial Razor",
-        "غسولات": "Cleansers",
-        "مزيلات مكياج": "Makeup Removers",
-        "مناديل التنظيف": "Wipes",
-        "منتجات الحلاقة للرجال": "Men's Shaving Products",
-        "تصفيف الشعر": "Hair Styling",
-        "المكياج العين": "Eye Makeup",
-        "أدوات مكياج": "Makeup Tools",
-        "الأظافر": "Nails",
-        "أحمر خدود": "Blush",
-        "اكسسوارات الشعر": "Hair Accessories",
-        "البكجات والعروض": "Bundles & Offers",
-        "عناية بالطفل": "Baby Care",
-        "باليت المكياج والآي شادو": "Makeup & Eyeshadow Palette",
-        "مكياج الحواجب": "Eyebrow Makeup",
-        "كتب": "Books",
-        "صبغات الشعر": "Hair Dyes",
-        "🌙تُحف رمضانية": "Ramadan Collectibles",
-        "المنزل": "Home",
-        "مستلزمات المطبخ": "Kitchen Essentials",
-        "مستلزمات المنزل": "Home Essentials",
-        "مستلزمات الأطفال": "Children's Essentials",
-        "إكسسوارات الحمام": "Bathroom Accessories",
-        "عطور منزلية": "Home Fragrances",
-        "اكسسوارات منزلية": "Home Accessories",
-        "أدوات كهربائية": "Electrical Appliances",
-        "مستلزمات التنظيف": "Cleaning Supplies"
-      };
+      
       
       // البيانات المحلية للأقسام الثابتة
       const mensSections = [
-        { name: "عطور للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=59" },
-        { name: "عطور", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=5" },
-        { name: "مزيلات عرق للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=74" },
-        { name: "منتجات العناية للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=115" },
-        { name: "منتجات الحلاقة للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=69" },
-        { name: "البشرة والوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=14" },
-        { name: "مرطبات وكريمات للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=50" },
-        { name: "معالجات وسيروم للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=54" },
-        { name: "العناية بالفم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=114" },
-        { name: "العناية بالأسنان", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=129" },
-        { name: "الوقاية من الشمس والتسمير", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=17" },
-        { name: "العناية بالشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=4" },
-        { name: "شامبو", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=61" },
-        { name: "سيروم وزيوت للشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=63" },
-        { name: "غسولات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=158" },
-        { name: "تصفيف الشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=64" }
+        { name: "عطور للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=59",imageUrl: "https://heavenscents.shop/wp-content/uploads/2023/10/%D8%B9%D8%B7%D8%B1-%D9%85%D9%8A-%D8%AC%D9%88%D9%8A-2.jpg" },
+
+        { name: "عطور", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=5",imageUrl: "https://ounass-ae.atgcdn.ae/contentful/b3xlytuyfm3e/1rC4W4kyrbdmcuANUUDhbl/ea7f9500638107d39d7333a47f9cb489/Fragrance_DSK_PLP_Banner.jpg?q=70" },
+
+        { name: "مزيلات عرق للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=74",imageUrl: "https://s7ore.com/uploads/2022_08_1660629685.webp" },
+
+        { name: "منتجات العناية للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=115",imageUrl: "https://m.media-amazon.com/images/I/61Qbbf0S+DL._AC_UF1000,1000_QL80_.jpg" },
+
+        { name: "منتجات الحلاقة للرجال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=69",imageUrl: "https://m.media-amazon.com/images/I/71GqayG0GOL._AC_UF1000,1000_QL80_.jpg" },
+
+        { name: "البشرة والوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=14",imageUrl: "https://www.cosmesurge.com/wp-content/uploads/2021/02/facial.jpeg" },
+
+        { name: "مرطبات وكريمات للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=50",imageUrl: "https://m.media-amazon.com/images/I/51Z-pqzJmjL._AC_UF1000,1000_QL80_.jpg" },
+
+        { name: "معالجات وسيروم للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=54",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQCaC2yB9m_is9m-qQXgZlEk-bSuSGBQSEGg&s" },
+
+        { name: "العناية بالفم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=114",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTix9LdHWcrxKPATbX6FZ2sANOzvmpwhzxL6A&s" },
+
+        { name: "العناية بالأسنان", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=129",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJpmtTVyb2qQgZUcMfL3HOtds6GLZHGbietA&s" },
+
+        { name: "الوقاية من الشمس والتسمير", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=17",imageUrl: "https://m.media-amazon.com/images/I/81HBavrZhxL._AC_UF1000,1000_QL80_.jpg" },
+
+        { name: "العناية بالشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=4",imageUrl: "https://egf8xpxjy4g.exactdn.com/wp-content/uploads/2022/09/%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%B4%D8%B9%D8%B1-%D9%84%D9%84%D8%B1%D8%AC%D8%A7%D9%84.jpeg?lossy=1&ssl=1" },
+
+        { name: "شامبو", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=61",imageUrl: "https://www.justformen.com/sites/g/files/sgirzt191/files/styles/webp/public/2024-02/3_CGXshampoo_product_application_mobile.jpg.webp?itok=5kfmGlJv" },
+
+        { name: "سيروم وزيوت للشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=63",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLcghnevivFVlbRHeVBJMlAiyMLBksQk5B_w&s" },
+
+        { name: "غسولات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=158",imageUrl: "https://cdn.shopify.com/s/files/1/0306/5004/0458/files/NOVACLEAR_WHITENING_FACIAL_FOAM_PICTURE_b43e5475-28cb-4174-bb47-a4419888ad75_480x480.jpg?v=1684576427" },
+
+        { name: "تصفيف الشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=64",imageUrl: "https://www.tyoemcosmetic.com/wp-content/uploads/hair-styling-products-manufacturer-1-1-768x576.jpg" }
       ];
       
       const womensSections = [
-        { name: "العناية بالجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=3" },
-        { name: "مرطب للجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=56" },
-        { name: "البشرة والوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=14" },
-        { name: "مرطبات وكريمات للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=50" },
-        { name: "معطر للجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=150" },
-        { name: "مقشرات وملمعات الجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=68" },
-        { name: "مستلزمات العناية الشخصية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=113" },
-        { name: "معالجات وسيروم للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=54" },
-        { name: "العناية باليدين", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=55" },
-        { name: "صابون استحمام", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=66" },
-        { name: "النظافة الشخصية للنساء", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=72" },
-        { name: "العناية بالقدم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=67" },
-        { name: "عطور", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=5" },
-        { name: "عطور للنساء", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=58" },
-        { name: "تفتيح", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=48" },
-        { name: "منتجات تفتيح الجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=135" },
-        { name: "مزيلات عرق للنساء", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=73" },
-        { name: "العناية بالحامل والمرضعة", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=16" },
-        { name: "إزالة الشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=80" },
-        { name: "العناية بالفم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=114" },
-        { name: "العناية بالأسنان", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=129" },
-        { name: "الوقاية من الشمس والتسمير", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=17" },
-        { name: "الوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=25" },
-        { name: "أقنعة الوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=40" },
-        { name: "منظفات البشرة", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=65" },
-        { name: "تقشير البشرة", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=42" },
-        { name: "العناية بالشفاه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=41" },
-        { name: "الشفاه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=51" },
-        { name: "العناية بالعين", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=71" },
-        { name: "تونرات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=70" },
-        { name: "الرموش", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=34" },
-        { name: "المكياج", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=12" },
-        { name: "فيتامينات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=116" }
+        { name: "العناية بالجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=3",imageUrl: "https://img.youm7.com/ArticleImgs/2023/4/18/360707-%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%AC%D8%B3%D9%85.jpg" },
+
+        { name: "مرطب للجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=56",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNExhXGW_1GNnIZvJ-PuHWspsxnAVlcETqZw&s" },
+
+        { name: "البشرة والوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=14",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqe_iyRbjMRZIWasDheCVoibyZGIkt4TmDRg&s" },
+
+        { name: "مرطبات وكريمات للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=50",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeaIMXwKxJJT09KJKtuTuJwgliIn1vllbpag&s" },
+
+        { name: "معطر للجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=150",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHdXbb8X76rGVl14aELIlkyLiOyvD9t2TfGg&s" },
+
+        { name: "مقشرات وملمعات الجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=68",imageUrl: "https://www.tadawi.me/wp-content/uploads/2023/02/Chemical-Peel.jpg" },
+
+        { name: "مستلزمات العناية الشخصية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=113",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNi3OihmJLd2FGdudy2WEhjTbAxtP93fypBQ&s" },
+
+        { name: "معالجات وسيروم للوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=54",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCqa-P_SITEXV8_qOZqm3bpUWJO9JbbyqO5w&s" },
+
+        { name: "العناية باليدين", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=55",imageUrl: "https://www.vetogate.com/Upload/libfiles/478/6/7.jpg" },
+
+        { name: "صابون استحمام", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=66",imageUrl: "https://joykuw.com/wp-content/uploads/2024/10/%D8%B5%D8%A7%D8%A8%D9%88%D9%86-1.jpg" },
+
+        { name: "النظافة الشخصية للنساء", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=72",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQij07Op8BRoFdyS73WMfI3gzH1TIvwUmkHgQ&s" },
+
+        { name: "العناية بالقدم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=67",imageUrl: "https://img.youm7.com/large/20190201014407447.jpg" },
+
+        { name: "عطور", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=5",imageUrl: "https://res.cloudinary.com/dkbnpozos/image/upload/v1727205158/faces/Site/2024/niche-week/landing-page/hero-banner/Mobile.jpg" },
+
+        { name: "عطور للنساء", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=58",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLqXpgo3mPcwa8XUFBR11XFHOFMberd4rdUA&s" },
+
+        { name: "تفتيح", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=48",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfYMxhZjH0xALNxCGazVCtPRQQjmDahynhqA&s" },
+
+        { name: "منتجات تفتيح الجسم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=135",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6rY9KlbWArIMzus1acWTj87TSEQsC5PWRNA&s" },
+
+        { name: "مزيلات عرق للنساء", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=73",imageUrl: "https://static.aljamila.com/styles/1100x732_scale/public/2020/06/24/3518581-246800735.png" },
+
+        { name: "العناية بالحامل والمرضعة", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=16",imageUrl: "https://www.uaewomen.net/wp-content/uploads/2021/01/%D8%A7%D9%84%D8%AD%D9%85%D9%84-%D8%A3%D8%AB%D9%86%D8%A7%D8%A1-%D8%A7%D9%84%D8%B9%D9%85%D9%84.jpg" },
+
+        { name: "إزالة الشعر", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=80",imageUrl: "https://images.ctfassets.net/orjawye31wvi/3Qehd6fVxWQh5D1sMauz9n/6ffd3a9d81937b25798560d3d8d98368/Venus-preset4.jpg?fm=webp&q=85&w=1600" },
+
+        { name: "العناية بالفم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=114",imageUrl: "https://www.kin.es/wp-content/uploads/2025/03/Blog_1-400x250.jpg" },
+
+        { name: "العناية بالأسنان", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=129",imageUrl: "https://www.turkeydentalclinic.com/wp-content/uploads/2023/06/agiz-hijyeni.png" },
+
+        { name: "الوقاية من الشمس والتسمير", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=17",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlS5NUIz85YQuw25cmV7z00naBdXbAFnLoEw&s" },
+
+        { name: "الوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=25",imageUrl: "https://cdn.salla.sa/mQQdQj/b34c06be-8ffa-48eb-9d5f-982328a53691-1000x562.5-xMjQzmlkEvSmkHwV755J6SysOQYoYcBP0bWqO1Si.jpg" },
+
+        { name: "أقنعة الوجه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=40",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSaMQGLLNJH2b1_F5uPw6VyF7Fjpx8-LktYg&s" },
+
+        { name: "منظفات البشرة", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=65",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPmr2CztvOesGmUUpLGsVhI2y2yXJvM45L8g&s" },
+
+        { name: "تقشير البشرة", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=42",imageUrl: "https://alawla.tv/uploads/posts/2023-11/66633.webp" },
+
+        { name: "العناية بالشفاه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=41",imageUrl: "https://izilbeauty.com/on/demandware.static/-/Sites-izil-Library/default/dw017f6183/izil-images/blogs/Perfect%20Pout/lips_blogposts-01.webp" },
+
+        { name: "الشفاه", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=51",imageUrl: "https://kw.charlottetilbury.com/sites/g/files/bndsjb2576/files/2023-08/lipstick-01.jpeg" },
+
+        { name: "العناية بالعين", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=71",imageUrl: "https://beautikasecret.com/cdn/shop/collections/image_2023-11-15_145808490.png?v=1700053341" },
+
+        { name: "تونرات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=70",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSdbmlooLh4g-YfqvrbkjZF-67UwOhsyN34A&s" },
+
+        { name: "الرموش", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=34",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmjFq-impwz1qHoTI3IPMSfMN6m1qARzs-j19lfrwNkLkUWpGBLo4sm26lre4Xmu9kemE&usqp=CAU" },
+
+        { name: "المكياج", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=12",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOYKp0cUzSw7N_1tP5Rt8yldZstKMF7_SUDg&s" },
+
+        { name: "فيتامينات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=116",imageUrl: "https://articles.cura.healthcare/wp-content/uploads/2023/01/%D9%81%D9%88%D8%A7%D8%A6%D8%AF_%D9%81%D9%8A%D8%AA%D8%A7%D9%85%D9%8A%D9%86_%D8%AF.png" }
       ];
       
       const othersSections = [
-        { name: "صابون اليدين", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=81" },
-        { name: "العناية بالفم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=114" },
-        { name: "العناية بالأسنان", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=129" },
-        { name: "المنزل", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=75" },
-        { name: "مستلزمات المطبخ", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=76" },
-        { name: "مستلزمات المنزل", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=122" },
-        { name: "مستلزمات الأطفال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=53" },
-        { name: "إكسسوارات الحمام", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=147" },
-        { name: "عطور منزلية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=127" },
-        { name: "اكسسوارات منزلية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=123" },
-        { name: "أدوات كهربائية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=148" },
-        { name: "مستلزمات التنظيف", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=78" },
-        { name: "فيتامينات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=116" },
-        { name: "مناديل التنظيف", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=49" },
-        { name: "البكجات والعروض", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=79" },
-        { name: "عناية بالطفل", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=154" },
-        { name: "كتب", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=166" },
-        { name: "🌙تُحف رمضانية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=128" }
+        { name: "صابون اليدين", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=81",imageUrl: "https://media.gemini.media/img/Medium/2020/12/25/2020_12_25_1_19_43_721.jpg" },
+
+        { name: "العناية بالفم", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=114",imageUrl: "https://www.hospitadent.com/wp-content/uploads/2022/09/blog_icerik_4998189524.jpg" },
+
+        { name: "العناية بالأسنان", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=129",imageUrl: "https://assets.nn.najah.edu/CACHE/images/uploads/weblog/2017/05/09/c45f7b4908f09cc7e3ecbe8901cf154539675516/6ce18dd361c2e69cf31fb71e21724d17.jpg" },
+
+        { name: "المنزل", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=75",imageUrl: "https://www.ikea.com/global/assets/range-categorisation/images/smart-air-purifiers-56472.jpeg?imwidth=500" },
+
+        { name: "مستلزمات المطبخ", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=76",imageUrl: "https://mybayutcdn.bayut.com/mybayut/wp-content/uploads/Equipping-Kitchen-Body1-ar18092024.png" },
+
+        { name: "مستلزمات المنزل", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=122",imageUrl: "https://media.zid.store/cdn-cgi/image/w=235,q=100,f=auto/https://media.zid.store/53026c6a-a974-43d2-a601-92e21c10eee0/25dde308-384b-440b-9347-0df5bdae8752-260x260.jpg" },
+
+        { name: "مستلزمات الأطفال", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=53",imageUrl: "https://arabiaparenting.firstcry.com/wp-content/uploads/2019/09/Newborn-Baby-Shopping-418461847-.jpg" },
+
+        { name: "إكسسوارات الحمام", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=147",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdlXWDu4VKyY0jXnRrbrWxE55XnnZHFXVAjA&s" },
+
+        { name: "عطور منزلية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=127",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcxHtZLSD9G4FNaMgYlob5LZAVwIwM2ggXNQ&s" },
+
+        { name: "اكسسوارات منزلية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=123",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtmIoDVmpRP7hO3tS1pk8wfoAjeEh3NGtlXA&s" },
+
+        { name: "أدوات كهربائية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=148",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNaOuaD4MlIy-sMkrY30EGGmrFhak7aCFXJw&s" },
+
+        { name: "مستلزمات التنظيف", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=78",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfSZcskprAssctkAPu249676Dub3t2j-kIDA&s" },
+
+        { name: "فيتامينات", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=116",imageUrl: "https://articles.cura.healthcare/wp-content/uploads/2023/01/%D9%81%D9%88%D8%A7%D8%A6%D8%AF_%D9%81%D9%8A%D8%AA%D8%A7%D9%85%D9%8A%D9%86_%D8%AF.png" },
+
+        { name: "مناديل التنظيف", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=49",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsbrH3wwkXuCK7-RPsPDGYDRpwnyCet5XhIQ&s" },
+
+        { name: "البكجات والعروض", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=79",imageUrl: "https://img.freepik.com/premium-vector/offers-arabic-text-logo_568120-2243.jpg" },
+
+        { name: "عناية بالطفل", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=154",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROSsaUoH5hCVXs36RvLeON5i5OHFauceTIQw&s" },
+
+        { name: "كتب", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=166",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJt_m5eiTX6kk3JEtVeOfCQdWxh6qYBlxZwg&s" },
+
+        { name: "🌙تُحف رمضانية", link: "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=128",imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdeXYQAmXDpfDBut3yhR-6VFX2e0WdYd_cOA&s" }
       ];
       
       const generalSectionsArray = [...mensSections, ...womensSections, ...othersSections];
@@ -1149,25 +1434,37 @@
         return canvas.toDataURL();
       }
       
-      function createLayeredButton(section) {
-        const btn = document.createElement("div");
-        btn.className = "section-button";
-        let displayText = currentLanguage === "en" && sectionTranslations[section.name] ? sectionTranslations[section.name] : section.name;
-        const imageUrl = generateSectionImage(displayText);
-        const bgImage = document.createElement("div");
-        bgImage.className = "bg-image";
-        bgImage.style.backgroundImage = "url('" + imageUrl + "')";
-        const overlay = document.createElement("div");
-        overlay.className = "overlay";
-        const text = document.createElement("div");
-        text.className = "text";
-        text.innerText = displayText;
-        btn.appendChild(bgImage);
-        btn.appendChild(overlay);
-        btn.appendChild(text);
-        btn.addEventListener("click", function () { openModal(section.link); });
-        return btn;
-      }
+    function createLayeredButton(section) {
+  const btn = document.createElement("div");
+  btn.className = "section-button";
+
+  // 1) نحصل على رابط الصورة من الخاصية imageUrl في كائن section
+  const bgImage = document.createElement("div");
+  bgImage.className = "bg-image";
+  bgImage.style.backgroundImage = `url('${section.imageUrl}')`;
+
+  // 2) طبقة التعتيم كما هي
+  const overlay = document.createElement("div");
+  overlay.className = "overlay";
+
+  // 3) نص القسم كما هو
+  const text = document.createElement("div");
+  text.className = "text";
+  text.innerText = section.name;
+
+  // تجميع العناصر
+  btn.appendChild(bgImage);
+  btn.appendChild(overlay);
+  btn.appendChild(text);
+
+  // ربط الحدث بفتح المودال
+  btn.addEventListener("click", function () {
+    openModal(section.link);
+  });
+
+  return btn;
+}
+
       
       function createSectionButtons(containerId, sections) {
         const container = document.getElementById(containerId);
@@ -1307,43 +1604,82 @@
       }
       
       // استدعاء تحميل الأقسام والمنتجات من Firebase
-      loadFirebaseCategories();
+      /*loadFirebaseCategories();*/
       loadProducts();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
-      // تعديل دالة البحث لتشمل الأقسام والمنتجات من قاعدة البيانات
-      document.getElementById("smartSearch").addEventListener("input", function () {
-        const query = this.value.trim().toLowerCase();
-        const resultsContainer = document.getElementById("searchResults");
-        resultsContainer.innerHTML = "";
-        if (query.length > 0) {
-          let resultsFound = false;
-          // البحث في الأقسام الثابتة
-          const allSections = generalSectionsArray;
-          allSections.forEach((section) => {
-            let displayName = currentLanguage === "en" && sectionTranslations[section.name] ? sectionTranslations[section.name] : section.name;
-            if (displayName.toLowerCase().indexOf(query) !== -1) {
-              resultsFound = true;
-              const resultBtn = createLayeredButton(section);
-              resultsContainer.appendChild(resultBtn);
-            }
-          });
-          // البحث في المنتجات المضافة من قاعدة البيانات
-          if (window.allProducts && Array.isArray(window.allProducts)) {
-            window.allProducts.forEach(product => {
-              if (product.name.toLowerCase().indexOf(query) !== -1) {
-                resultsFound = true;
-                const productCard = createProductCard(product);
-                resultsContainer.appendChild(productCard);
-              }
-            });
-          }
-          if (!resultsFound) { resultsContainer.innerHTML = "<p>لا توجد نتائج مطابقة.</p>"; }
-        }
-      });
+     document.getElementById("smartSearch").addEventListener("input", function () {
+  const query = this.value.trim().toLowerCase();
+  const resultsContainer = document.getElementById("searchResults");
+  resultsContainer.innerHTML = "";
+
+  if (!query.length) return;
+
+  let filtered = [];
+
+  if (currentView === 'project') {
+    // بحث في لوازم المشاريع
+    filtered = (window.allProducts || []).filter(p =>
+      p.category && p.category.includes("لوازم المشروع") &&
+      p.name.toLowerCase().includes(query)
+    );
+  } else if (currentView === 'perfumes') {
+    // بحث في أشهر العطور
+    filtered = (window.allProducts || []).filter(p =>
+      p.category && p.category.includes("عطور") &&
+      p.name.toLowerCase().includes(query)
+    );
+  } else {
+    // البحث الافتراضي: أقسام + منتجات
+    // 1) أقسام
+    const allSections = generalSectionsArray;
+    allSections.forEach(section => {
+      const name = section.name.toLowerCase();
+      if (name.includes(query)) {
+        const btn = createLayeredButton(section);
+        resultsContainer.appendChild(btn);
+      }
+    });
+    // 2) منتجات في الواجهات العامة أو عبر Firebase
+    filtered = (window.allProducts || []).filter(p =>
+      p.name.toLowerCase().includes(query)
+    );
+  }
+
+  // عرض النتائج المُفلترة (منتجات)
+  if (filtered.length) {
+    filtered.forEach(prod => {
+      const card = createProductCard(prod);
+      resultsContainer.appendChild(card);
+    });
+  } else if (!resultsContainer.children.length) {
+    resultsContainer.innerHTML = "<p>لا توجد نتائج مطابقة.</p>";
+  }
+});
+
+
       
-      document.getElementById("shopNow").addEventListener("click", function () {
+      document.getElementById("shopNow").addEventListener("click", function (event) {
+currentView = 'shop';
+
+  event.preventDefault();  // يمنع الانتقال الافتراضي للـ<a>
         document.getElementById("landingSection").style.display = "none";
         document.getElementById("sectionsSection").style.display = "block";
+document.getElementById("tabs-wrapper").style.display = "block";
+
         // إنشاء أزرار الأقسام الأصلية
         createSectionButtons("generalSections", generalSectionsArray);
         createSectionButtons("menSections", mensSections);
@@ -1353,58 +1689,50 @@
       });
       
       window.goBack = function () {
-        if (document.getElementById("sectionsSection").style.display === "block") {
-          document.getElementById("sectionsSection").style.display = "none";
-          document.getElementById("landingSection").style.display = "block";
-        } else {
-          window.history.back();
-        }
-      };
+  // 1) إذا كنا في واجهة “أشهر العطور”:
+  if (document.getElementById("popularPerfumesSection").style.display === "block") {
+    document.getElementById("popularPerfumesSection").style.display = "none";
+    document.getElementById("landingSection").style.display = "block";
+    return;
+  }
+  // 2) إذا كنا في أي من واجهات الأقسام العامة أو لوازم المشاريع:
+  if (document.getElementById("sectionsSection").style.display === "block") {
+    document.getElementById("sectionsSection").style.display = "none";
+    document.getElementById("landingSection").style.display = "block";
+  } else {
+    window.history.back();
+  }
+};
+
+   
+
+
+
+
+
+
+function closeAdvertisingView() {
+  const sec = document.getElementById("sectionsSection");
+
+  // 1) أخفّيه فقط، دون مسح المحتوى أو إعادة الأنماط:
+  sec.style.display = "none";
+
+  // 2) أظهر landingSection والعناصر الأخرى كما كانت:
+  document.getElementById("landingSection").style.display   = "block";
+  document.getElementById("tabs-wrapper").style.display    = "block";
+  document.getElementById("searchContainer").style.display = "block";
+
+  // 3) أعد currentView إلى القيمة الافتراضية:
+  currentView = 'landing';
+}
+window.closeAdvertisingView = closeAdvertisingView;
+
+
+
+
+
+   
       
-      window.toggleLanguage = function () {
-        if (currentLanguage === "ar") {
-          currentLanguage = "en";
-          document.documentElement.lang = "en";
-          document.querySelector("#landing h1").innerText = "Mulberry Store";
-          document.querySelectorAll(".phrase")[0].innerText = '"Where exquisite taste meets modern shopping experience."';
-          document.querySelectorAll(".phrase")[1].innerText = '"Discover our complete and distinctive collection."';
-          document.getElementById("storeDescription").innerHTML =
-            "<p>Welcome to Mulberry Store – your premier destination for premium skincare, personal care, exclusive gift packages, and luxurious perfumes. Our mission is to deliver an unparalleled shopping experience that blends quality, comfort, and innovation.</p><p>Our online system makes shopping effortless: browse our diverse categories, add your favorites to the cart, and complete secure and fast transactions. We are committed to rapid delivery and exceptional customer service.</p><p>At Mulberry Store, we build lasting relationships through excellence and innovation. Learn more about our story and dedicated team below.</p>";
-          document.getElementById("shopNow").innerText = "Show Products";
-          document.querySelectorAll("#tabs .tab")[0].innerText = "General";
-          document.querySelectorAll("#tabs .tab")[1].innerText = "Men";
-          document.querySelectorAll("#tabs .tab")[2].innerText = "Women";
-          document.querySelectorAll("#tabs .tab")[3].innerText = "Other";
-          document.querySelector("#extendedInfo p").innerText = "About Mulberry Store & Team";
-          document.getElementById("joinTeamBtn").innerText = "Join the Mulberry Team";
-          document.getElementById("orderProductsBtn").innerText = "Request Consultation";
-        } else {
-          currentLanguage = "ar";
-          document.documentElement.lang = "ar";
-          document.querySelector("#landing h1").innerText = "Mulberry Store";
-          document.querySelectorAll(".phrase")[0].innerText = '"حيث يلتقي الذوق الرفيع مع تجربة التسوق العصرية."';
-          document.querySelectorAll(".phrase")[1].innerText = '"اكتشف تشكيلتنا الكاملة والمميزة."';
-          document.getElementById("storeDescription").innerHTML =
-            "<p>مرحبًا بكم في Mulberry Store – المتجر الرائد الذي يقدم أفضل منتجات العناية بالبشرة، العناية الشخصية، باقات الهدايا والعطور الفاخرة. مهمتنا هي تقديم تجربة تسوق لا مثيل لها تجمع بين الجودة والراحة والابتكار في كل تفصيل.</p><p>يعمل نظامنا الإلكتروني على تسهيل عملية الشراء: تصفح الأقسام المتنوعة، أضف منتجاتك المفضلة إلى سلة التسوق، وأكمل عملية الدفع عبر بوابات آمنة وسريعة. نحن ملتزمون بتقديم خدمة توصيل سريعة ودعم عملاء احترافي لضمان رضاكم التام.</p><p>يهدف Mulberry Store إلى بناء علاقات دائمة مع عملائه من خلال توفير بيئة تسوق متميزة تجمع بين الأناقة والتكنولوجيا. تعرف على قصتنا وفريق العمل المبدع الذي يقف خلف كل منتج ونصيحة نقدمها لك.</p>";
-          document.getElementById("shopNow").innerText = "عرض المنتجات";
-          document.querySelectorAll("#tabs .tab")[0].innerText = "عامة";
-          document.querySelectorAll("#tabs .tab")[1].innerText = "للرجال";
-          document.querySelectorAll("#tabs .tab")[2].innerText = "للنساء";
-          document.querySelectorAll("#tabs .tab")[3].innerText = "اخرى";
-          document.querySelector("#extendedInfo p").innerText = "حول Mulberry Store وفريق العمل";
-          document.getElementById("joinTeamBtn").innerText = "انضم إلى Mulberry Team";
-          document.getElementById("orderProductsBtn").innerText = "اطلب استشارة";
-        }
-        document.querySelector(".language-toggle").innerText = currentLanguage === "en" ? "AR" : "EN";
-        document.getElementById("smartSearch").value = "";
-        document.getElementById("searchResults").innerHTML = "";
-        if (document.getElementById("sectionsSection").style.display === "block") {
-          createSectionButtons("generalSections", generalSectionsArray);
-          createSectionButtons("menSections", mensSections);
-          createSectionButtons("womenSections", womensSections);
-          createSectionButtons("otherSections", othersSections);
-        }
-      };
 
       // دوال لعجلة الحظ (Lucky Wheel Modal)
       window.openLuckyWheelModal = function() {
@@ -1443,6 +1771,158 @@
         document.getElementById("productModal").style.display = "none";
       };
     };
+
+
+
+
+
+
+// عند النقر على زر لوازم المشاريع: نستخدم نفس واجهة sectionsSection
+document.getElementById("projectSuppliesBtn").addEventListener("click", function(event) {
+currentView = 'project';
+
+  event.preventDefault();
+
+  // 1) إخفاء landing
+  document.getElementById("landingSection").style.display = "none";
+  // 2) إظهار sectionsSection
+  document.getElementById("sectionsSection").style.display = "block";
+
+  // 3) إخفاء شريط التبويبات (tabs) لأننا نعرض فئة واحدة فقط
+  document.getElementById("tabs-wrapper").style.display = "none";
+
+  // 4) تفريغ حاويات المنتجات الثابتة (القسم العام)
+  const generalContainer = document.getElementById("generalSections");
+  generalContainer.innerHTML = "";
+
+  // 5) فلترة منتجات "لوازم المشاريع" من allProducts
+  const filtered = (window.allProducts || []).filter(p =>
+    p.category && p.category.includes("لوازم المشروع")
+  );
+
+  // 6) إذا لا توجد منتجات
+  if (filtered.length === 0) {
+    generalContainer.innerHTML = "<p>لا توجد منتجات في هذه الفئة.</p>";
+  } else {
+    // 7) عرض كل منتج باستخدام createProductCard (نفس تصميم بطاقات العناية)
+    filtered.forEach(prod => {
+      const card = createProductCard(prod);
+      generalContainer.appendChild(card);
+    });
+  }
+});
+
+
+
+
+
+
+
+// ----------------------------
+// واجهة “أشهر العطور” بمثابة “لوازم المشاريع” ولكن بفلترة “عطور”
+document.getElementById("popularPerfumesBtn").addEventListener("click", function(event) {
+currentView = 'perfumes';
+
+  event.preventDefault();
+
+  // 1) إخفاء landing
+  document.getElementById("landingSection").style.display = "none";
+  // 2) إظهار sectionsSection
+  document.getElementById("sectionsSection").style.display = "block";
+
+  // 3) إخفاء شريط التبويبات (tabs) لأننا نعرض فئة واحدة فقط
+  document.getElementById("tabs-wrapper").style.display = "none";
+
+document.getElementById("popularPerfumesSection").style.display = "block";
+
+
+  // 4) تفريغ حاويات المنتجات الثابتة (القسم العام)
+  const generalContainer = document.getElementById("generalSections");
+  generalContainer.innerHTML = "";
+
+  // 5) فلترة منتجات “عطور” من allProducts
+  const filtered = (window.allProducts || []).filter(p =>
+    p.category && p.category.includes("عطور")
+  );
+
+  // 6) إذا لا توجد منتجات
+  if (filtered.length === 0) {
+    generalContainer.innerHTML = "<p>لا توجد منتجات في هذه الفئة.</p>";
+  } else {
+    // 7) عرض كل منتج باستخدام createProductCard
+    filtered.forEach(prod => {
+      const card = createProductCard(prod);
+      generalContainer.appendChild(card);
+    });
+  }
+});
+// ----------------------------
+
+
+
+
+
+
+
+// ----------------------------
+// واجهة “الإعلان وجلسات التصوير” باستخدام القسم المستقل
+document.getElementById("advertisingBtn").addEventListener("click", function(event) {
+  event.preventDefault();
+  currentView = 'advertising';
+
+  // إخفاء landing و tabs و search و sectionsSection
+  document.getElementById("landingSection").style.display   = "none";
+  document.getElementById("tabs-wrapper").style.display    = "none";
+  document.getElementById("searchContainer").style.display = "none";
+  document.getElementById("sectionsSection").style.display = "none";
+
+  // أظهر القسم الجديد advertisingSection
+  document.getElementById("advertisingSection").style.display = "block";
+});
+
+// **أضف هذا المستمع مباشرة بعد الكود أعلاه**
+// ربط زر الإغلاق الخاص بالإعلان
+document.getElementById("closeAdvertisingBtn").addEventListener("click", function() {
+  // أخفِ advertisingSection
+  document.getElementById("advertisingSection").style.display = "none";
+
+  // أعد إظهار landing و tabs و search
+  document.getElementById("landingSection").style.display   = "block";
+  document.getElementById("tabs-wrapper").style.display    = "block";
+  document.getElementById("searchContainer").style.display = "block";
+
+  // ارجع currentView إذا احتاج الأمر
+  currentView = 'landing';
+});
+
+
+
+
+
+
+
+// ----------------------------
+
+
+
+
+
+
+
+
   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
