@@ -812,7 +812,9 @@ font-size: 1rem;
     max-width: none;               /* يلغي أية حدود عرض سابقة */
   }
 .product-button span {
-    font-size: 12px !important; /* يمكنك التعديل مثلاً 11px أو 10px حسب ما يناسبك */
+    font-size: 8.2px !important; /* يمكنك التعديل مثلاً 11px أو 10px حسب ما يناسبك */
+ padding-top: 5px;
+  padding-bottom: 10px;
   }
   .advertisingView {
     margin-top: 120px;                       /* 120px على الموبايل */
@@ -889,6 +891,109 @@ font-size: 1rem;
   overflow-y: auto;
   position: relative;
 }
+
+
+
+
+
+
+//من هون واحد
+  .white-background-section {
+    background-color: white;
+    min-height: 100vh;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+//لهون واحد
+
+
+
+
+
+
+
+
+
+
+ /* التعديل 1: خلفية شفافة للواجهات */
+        .gpd-section {
+            background: rgba(255, 165, 0, 0.7) !important; /* أبيض بشفافية 70% */
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+            display: none;
+            position: relative;
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+       #bagsSection .gpd-container,
+#accessoriesSection .gpd-container,
+#specialKaaKidsSection .gpd-container {
+    background: rgba(255, 165, 0, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+        
+        /* التعديل 2: تحسين شكل زر الإغلاق */
+        .back-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        .back-container button {
+            background: linear-gradient(135deg, #6a1b9a, #4a148c);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(106, 27, 154, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .back-container button:hover {
+            background: linear-gradient(135deg, #4a148c, #38006b);
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 6px 16px rgba(106, 27, 154, 0.6);
+        }
+        
+        .back-container button i {
+            transition: var(--transition);
+        }
+        
+        .back-container button:hover i {
+            transform: translateX(-3px);
+        }
+
+
+
+
+
 
 
 
@@ -1040,9 +1145,31 @@ font-size: 1rem;
 
 <!-- زر أشهر العطور -->
 <a id="popularPerfumesBtn" href="javascript:void(0)" class="product-button">
-  <div class="img-wrapper" style="background-image: url('https://cdn-1.hosting.anfa.media/upload/q_50/https://waheteter.com/wp-content/uploads/2023/08/Jean-Paul-Gaultier-Le-Male-Elixir2.jpg');"></div>
+  <div class="img-wrapper" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtuzySM_rklqOfarn1xsYWfQODeXQ5Z8yzmA&s');"></div>
   <span class="btn-label">.أشهر. .العطور.</span>
 </a>
+
+
+
+
+  <!-- زر شناتي -->
+  <a id="myBagsBtn" href="javascript:void(0)" class="product-button">
+    <div class="img-wrapper" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFBLyNZ6rMRhtVKcJ3usDuUWzQlFFYfBF_2g&s');"></div>
+    <span class="btn-label">شناتي</span>
+  </a>
+
+  <!-- زر اكسسوارات -->
+  <a id="accessoriesBtn" href="javascript:void(0)" class="product-button">
+    <div class="img-wrapper" style="background-image: url('https://cdn.salla.sa/DWWdb/6SCAdS0dzBpMapQW06S8df2NlAfpAV5I5Ap1soGq.jpg');"></div>
+    <span class="btn-label">اكسسوارات</span>
+  </a>
+
+  <!-- زر كعاكيش مميزة -->
+  <a id="specialKaaKidsBtn" href="javascript:void(0)" class="product-button">
+    <div class="img-wrapper" style="background-image: url('https://img.youm7.com/ArticleImgs/2024/2/13/4136476-%D8%AF%D8%A8%D8%A7%D8%AF%D9%8A%D8%A8-%D9%87%D8%AF%D8%A7%D9%8A%D8%A7-%D9%84%D9%84%D9%81%D9%84%D8%A7%D9%86%D8%AA%D9%8A%D9%86.jpg');"></div>
+    <span class="btn-label">كعاكيش مميزة</span>
+  </a>
+
 
 
 
@@ -1153,6 +1280,93 @@ font-size: 1rem;
   <img src="https://i.ibb.co/VWCQzvD3/image.png" alt="إعلان وجلسة تصوير"
        style="display:block; width:100%; height:auto;"/>
 </section>
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+<!-- قسم شناتي -->
+<section id="bagsSection" class="gpd-section" style="display: none;">
+  <div class="gpd-container">
+    <div class="back-container">
+      <button onclick="closeBagsView()">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+    </div>
+    <div id="bagsButtons" class="section-buttons">
+      <!-- أزرار شناتي الفرعية -->
+      <a id="bagsWomenBtn" class="product-button" href="javascript:void(0)">
+        <div class="img-wrapper" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_dCYeapj8QReiyvEqJ2ZuWYa05_Agrl9V0w&s');"></div>
+        <span class="btn-label">شناتي نسائية</span>
+      </a>
+      <a id="bagsMenBtn" class="product-button" href="javascript:void(0)">
+        <div class="img-wrapper" style="background-image: url('https://png.pngtree.com/png-vector/20220328/ourlarge/pngtree-school-bag-in-blue-color-png-image_4517397.png');"></div>
+        <span class="btn-label">شناتي رجالية</span>
+      </a>
+    </div>
+    <div id="bagsFrameContainer" style="display: none; margin-top: 20px;">
+      <iframe id="bagsFrame" src="" style="width: 100%; height: 80vh; border: none; border-radius: 8px;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- قسم اكسسوارات -->
+<section id="accessoriesSection" class="gpd-section" style="display: none;">
+  <div class="gpd-container">
+    <div class="back-container">
+      <button onclick="closeAccessoriesView()">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+    </div>
+    <div id="accessoriesButtons" class="section-buttons">
+      <!-- أزرار اكسسوارات الفرعية -->
+      <a id="accWomenBtn" class="product-button" href="javascript:void(0)">
+        <div class="img-wrapper" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQph3lb6q5Ll08hO44jBa5plV__cYXFvJT4nQ&s');"></div>
+        <span class="btn-label">اكسسوارات نسائية</span>
+      </a>
+      <a id="accMenBtn" class="product-button" href="javascript:void(0)">
+        <div class="img-wrapper" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmhO7THUei5FGxhndkNnf_Z_O6Dfml42DPvw&s');"></div>
+        <span class="btn-label">اكسسوارات رجالية</span>
+      </a>
+    </div>
+    <div id="accessoriesFrameContainer" style="display: none; margin-top: 20px;">
+      <iframe id="accessoriesFrame" src="" style="width: 100%; height: 80vh; border: none; border-radius: 8px;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- قسم كعاكيش مميزة -->
+<section id="specialKaaKidsSection" class="gpd-section" style="display: none;">
+  <div class="gpd-container">
+    <div class="back-container">
+      <button onclick="closeKaaKidsView()">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+    </div>
+    <!-- iframe مباشر لعرض الموقع -->
+    <div style="margin-top: 20px;">
+      <iframe id="kaaKidsFrame" src="" style="width: 100%; height: 90vh; border: none; border-radius: 8px;"></iframe>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1901,8 +2115,88 @@ document.getElementById("closeAdvertisingBtn").addEventListener("click", functio
 
 
 
-// ----------------------------
 
+
+
+
+
+// دوال مساعدة لإخفاء/إظهار الواجهات
+function hideAllMainViews() {
+  document.getElementById("landingSection").style.display = "none";
+  document.getElementById("sectionsSection").style.display = "none";
+  document.getElementById("advertisingSection").style.display = "none";
+  document.getElementById("bagsSection").style.display = "none";
+  document.getElementById("accessoriesSection").style.display = "none";
+  document.getElementById("specialKaaKidsSection").style.display = "none";
+}
+function showLandingView() {
+  document.getElementById("landingSection").style.display = "block";
+}
+
+// ——— واجهة شناتي ———
+document.getElementById("myBagsBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  hideAllMainViews();
+  document.getElementById("bagsSection").style.display = "block";
+});
+document.getElementById("bagsWomenBtn").addEventListener("click", function() {
+  document.getElementById("bagsFrameContainer").style.display = "block";
+  document.getElementById("bagsFrame").src = "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=180"; // ← ضع هنا رابط شناتي نسائية
+});
+document.getElementById("bagsMenBtn").addEventListener("click", function() {
+  document.getElementById("bagsFrameContainer").style.display = "block";
+  document.getElementById("bagsFrame").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHk4L6z7xS9gVkINdraI9248pa-u6NPs39Q&s"; // ← ضع هنا رابط شناتي رجالية
+});
+function closeBagsView() {
+  document.getElementById("bagsSection").style.display = "none";
+  showLandingView();
+}
+
+// ——— واجهة اكسسوارات ———
+document.getElementById("accessoriesBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  hideAllMainViews();
+  document.getElementById("accessoriesSection").style.display = "block";
+});
+document.getElementById("accWomenBtn").addEventListener("click", function() {
+  document.getElementById("accessoriesFrameContainer").style.display = "block";
+  document.getElementById("accessoriesFrame").src = "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=176"; // ← ضع هنا رابط اكسسوارات نسائية
+});
+document.getElementById("accMenBtn").addEventListener("click", function() {
+  document.getElementById("accessoriesFrameContainer").style.display = "block";
+  document.getElementById("accessoriesFrame").src = "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=178"; // ← ضع هنا رابط اكسسوارات رجالية
+});
+function closeAccessoriesView() {
+  document.getElementById("accessoriesSection").style.display = "none";
+  showLandingView();
+}
+
+// ——— واجهة كعاكيش مميزة ———
+document.getElementById("specialKaaKidsBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  hideAllMainViews();
+  document.getElementById("specialKaaKidsSection").style.display = "block";
+  document.getElementById("kaaKidsFrame").src = "https://d3cfvw9kavtabe.cloudfront.net/shops/nada/explorer?categoryId=157"; // ← ضع هنا رابط كعاكيش مميزة
+});
+function closeKaaKidsView() {
+  document.getElementById("specialKaaKidsSection").style.display = "none";
+  showLandingView();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ----------------------------
 
 
 
