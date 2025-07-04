@@ -1061,6 +1061,51 @@ font-size: 1rem;
   </script>
 </head>
 <body>
+
+
+
+
+
+
+
+
+
+<script>
+  // تحقق من وضع الصيانة قبل تحميل أي محتوى
+  database.ref('siteMaintenance/maintenance').once('value').then(snapshot => {
+    if (snapshot.val()) {
+      // امسح كل محتوى الصفحة
+      document.body.innerHTML = '';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.margin = '0';
+      document.body.style.backgroundColor = '#ffffff';
+      // أضف الصورة في وسط الشاشة
+      const img = document.createElement('img');
+      img.src = 'https://i.ibb.co/ZRxK9958/image.png';
+      Object.assign(img.style, {
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        maxWidth: '80%',
+        maxHeight: '80%'
+      });
+      document.body.appendChild(img);
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- Full-screen Background Video -->
   <video id="backgroundVideo" autoplay muted loop playsinline>
     <source src="https://screenpal.com/content/video/download/cThn2dnQrOw">
