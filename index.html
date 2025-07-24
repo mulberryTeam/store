@@ -497,12 +497,7 @@ body {
       background-color: #fff;
       width: 200px;
     }
-    .product-card img {
-      width: 100%;
-      height: auto;
-      max-height: 150px;
-      object-fit: contain;
-    }
+   
     .product-card h3 {
       font-size: 16px;
       margin: 10px 0 5px;
@@ -2920,15 +2915,7 @@ margin-top: -40px;
   border-color: #007bff;
 }
 
-/* صورة المنتج */
-.product-card img {
-  max-width: 100%;
-  height: 140px;
-  object-fit: contain;
-  border-radius: 10px;
-  margin-bottom: 14px;
-  user-select: none;
-}
+
 
 /* اسم المنتج */
 .product-card h3 {
@@ -3039,10 +3026,7 @@ margin-top: -40px;
     flex-direction: column !important;
     align-items: flex-start !important;
   }
-  .product-card img {
-    max-height: 120px !important;
-    margin-bottom: 10px !important;
-  }
+  
   .product-card h3 {
     font-size: 18px !important;
     color: #1a1a1a !important;
@@ -3110,13 +3094,7 @@ margin-top: -40px;
     box-sizing: border-box !important;
   }
 
-  /* 3. صورة المنتج: تأخذ عرض البطاقة كاملاً */
-  .product-card img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    margin-bottom: 12px !important;
-  }
+ 
 
   /* 4. نصوص البطاقة: مسافات وأسطر كافية */
   .product-card h3 {
@@ -3141,6 +3119,242 @@ margin-top: -40px;
   }
 }
 
+
+
+
+
+
+
+/* زر الهامبرغر */
+.sidebar-toggle {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 11001;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* القائمة الجانبية */
+#sidebarMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  overflow-y: auto;
+  transition: width 0.3s ease;
+  z-index: 11000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* عند الفتح */
+body.sidebar-open #sidebarMenu {
+  width: 280px;
+}
+
+/* عنصر */
+.sidebar-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sidebar-item:hover {
+  background: rgba(255,255,255,0.15);
+}
+.category-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-left: 10px;
+}
+.category-name {
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+body.sidebar-open .category-name {
+  opacity: 1;
+}
+
+/* الوضع الليلي */
+html.dark-mode #sidebarMenu {
+  background: rgba(0,0,0,0.4);
+}
+html.dark-mode .category-name {
+  color: #fff;
+}
+
+/* الهاتف: تغطي الشاشة عند الفتح */
+@media (max-width: 768px) {
+  #sidebarMenu {
+    width: 0;
+  }
+  body.sidebar-open #sidebarMenu {
+    width: 100%;
+  }
+}
+
+/* 1. إعدادات الزر في الحالة الافتراضية (القائمة مغلقة) */
+#sidebarToggleBtn {
+  position: fixed;
+  top: 4.5rem;
+  right: 3rem;
+  transition: right 0.3s ease, left 0.3s ease;
+}
+
+/* 2. عندما تكون القائمة مفتوحة (body يحمل الكلاس sidebar-open) */
+body.sidebar-open #sidebarToggleBtn {
+  /* نقل الزر من اليمين إلى اليسار بمقدار عرض الـsidebar */
+  left: 20px;   /* استبدل 250px بعرض قائمتك الجانبية */
+  right: auto;   /* يلغي ضبط الـright */
+}
+
+
+
+
+
+.product-card img {
+  display: block;         /* لإزالة المسافات الفارغة */
+  width: auto;            /* العرض الطبيعي للصورة */
+  height: auto;           /* الارتفاع الطبيعي للصورة */
+  max-width: 100%;        /* لا تتجاوز عرض البطاقة */
+  max-height: none;       /* لا تقيّد الارتفاع */
+  object-fit: none;       /* تظهر الصورة كاملة دون قصّ */
+  border-radius: 10px;    /* إن كنت تريد الاحتفاظ بالزويا الدائرية */
+  margin-bottom: 14px;    /* قم بضبط الهوامش كما يناسب التصميم */
+  overflow: visible;      /* تأكد من عدم قص أي جزء */
+  user-select: none;      /* يمنع تحديد الصورة بنقرة */
+}
+/* === Override كامل لصور المنتجات === */
+#sectionsSection .product-card img {
+  display: block !important;
+  width: auto !important;         /* عرض الصورة الطبيعي */
+  height: auto !important;        /* ارتفاع الصورة الطبيعي */
+  max-width: 100% !important;     /* لا تتجاوز عرض البطاقة */
+  max-height: none !important;    /* لا تقيّد الارتفاع */
+  object-fit: none !important;    /* تظهر الصورة كاملة دون قصّ */
+  overflow: visible !important;   /* لا تقصّ أي جزء */
+  margin-bottom: 14px !important; /* أو غيرها حسب التصميم */
+  border-radius: 10px !important; /* إن احتجت تحتفظ بالزويا الدائرية */
+  user-select: none !important;
+}
+
+
+
+
+.product-card img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin-bottom: 12px !important;
+  }
+.product-card img {
+    max-height: 120px !important;
+    margin-bottom: 10px !important;
+  }
+.product-card img {
+  max-width: 100%;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  user-select: none;
+}
+.product-card img {
+      width: 100%;
+      height: auto;
+      max-height: 150px;
+      object-fit: contain;
+    }
+
+
+
+/* ضبط نافذة المنتجات المنبثقة لتناسب جميع الشاشات دون تجاوز */
+.product-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 100%;
+  height: 85vh;
+  margin: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 10000;
+  box-sizing: border-box;
+  padding: 0 12px; /* مسافة بسيطة من الجانبين */
+}
+
+/* المحتوى الداخلي مع تمرير فقط عمودي */
+.product-modal .products-container {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden; /* منع تمرير أفقي داخل المحتوى */
+  padding: 1rem 0;
+}
+
+
+
+.sidebar-item {
+  border: 1px solid rgba(255, 255, 255, 0.3);   /* إطار شفاف أبيض */
+  border-radius: 12px;                          /* حواف دائرية */
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.1);         /* خلفية شفافة */
+  backdrop-filter: blur(6px);                  /* تمويه خلف العنصر */
+  -webkit-backdrop-filter: blur(6px);          /* دعم سفاري */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* توهج خفيف حول العنصر */
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* تأثير عند المرور بالماوس (اختياري) */
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+
+
+/* تأكد أن القائمة الجانبية لا تسمح بالتمرير الأفقي */
+#sidebarMenu {
+  overflow-y: auto;       /* يسمح بالتمرير عموديًا */
+  overflow-x: hidden;     /* يمنع التمرير الأفقي نهائيًا */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;   /* يجعل العناصر تملأ العرض بالكامل */
+  box-sizing: border-box;
+}
+
+/* تأكد أن كل عنصر قسم يمتد عرض القائمة بالكامل بدون انزلاق */
+.sidebar-item {
+  flex: 0 0 auto;
+  width: 100%;            /* يملأ عرض القائمة الجانبية دائمًا */
+  box-sizing: border-box;
+  overflow: hidden;       /* يمنع أي محتوى داخلي من الخروج */
+}
 
 
   </style>
@@ -3223,16 +3437,18 @@ function initBannerCarousel(urls) {
 <!-- Video Background with Loading Placeholder -->
 <div id="videoContainer">
   <img id="videoPlaceholder" src="https://i.ibb.co/CKd6Q0rL/4.png" alt="Loading background">
-  <video id="backgroundVideo" autoplay muted loop playsinline>
-    <source src="https://videos.pexels.com/video-files/7772674/7772674-hd_1080_1920_25fps.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
 </div>
 <div id="overlay"></div>
 
 
 
+<!-- زر الهامبرغر العائم -->
+<button id="sidebarToggleBtn" class="sidebar-toggle">
+  <i class="fas fa-bars"></i>
+</button>
 
+<!-- القائمة الجانبية -->
+<div id="sidebarMenu"></div>
 
 
 
@@ -4029,10 +4245,16 @@ productsGrid.appendChild(productCard);
 //لهووون1
 
 
+const productImg = productCard.querySelector('img');
+if (productImg) {
+  productImg.style.objectFit = 'contain';
+  productImg.style.width = '100%';
+  productImg.style.height = '150px'; // أو عدّلها حسب حجم بطاقتك المناسب
+}
 
 
   
-  productsGrid.appendChild(productCard);
+  //productsGrid.appendChild(productCard);
 
 
 }
@@ -4238,6 +4460,64 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+
+
+
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    // 🔴 استبدل هذه القيم بقيم مشروعك الحقيقي:
+    apiKey: "AIzaSyAi3_y7ugKB0cgzMV1-IVvbE2BwG_9RKSs",
+    authDomain: "team-analysis-3c196.firebaseapp.com",
+    projectId: "team-analysis-3c196",
+    databaseURL: "https://team-analysis-3c196-default-rtdb.firebaseio.com",
+    storageBucket: "team-analysis-3c196.firebasestorage.app",
+    messagingSenderId: "38968485922",
+    appId: "1:38968485922:web:667832a4aa77599ba8a6fb"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const sidebar = document.getElementById("sidebarMenu");
+  const categoriesRef = ref(db, 'categories');
+
+  onValue(categoriesRef, snapshot => {
+  sidebar.innerHTML = ''; // تنظيف القائمة أولًا
+  snapshot.forEach(child => {
+    const data = child.val();
+    const item = document.createElement("div");
+    item.className = "sidebar-item";
+    item.innerHTML = `
+      <img src="${data.imageUrl}" alt="${data.name}" class="category-icon">
+      <span class="category-name">${data.name}</span>
+    `;
+    // نستخدم هنا نفس الفنكشن اللي يفتح واجهة القسم
+    item.onclick = () => {
+  openProductsModal(data.name);            // فتح القسم
+  document.body.classList.remove('sidebar-open'); // إغلاق الشريط الجانبي
+};
+
+    sidebar.appendChild(item);
+  });
+});
+
+
+  // التحكم بفتح/إغلاق القائمة
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("sidebarToggleBtn");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        document.body.classList.toggle("sidebar-open");
+      });
+    }
+  });
+</script>
+
+
 
 
 
