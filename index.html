@@ -3383,6 +3383,45 @@ body.sidebar-open #sidebarToggleBtn {
 
 
 
+/* على أي قسم تريد تأجيل معالجته/rendering حتى يصبح مرئيًا */
+.lazy-section {
+  /* يؤجل layout+paint حتى يظهر العنصر في الـ viewport */
+  content-visibility: auto;
+  /* أضف حجمًا افتراضيًا حتى لا ينهار التخطيط layout */
+  contain-intrinsic-size: 800px 600px;
+}
+
+
+
+
+
+
+/* ====== أرجواني شفاف مع الحفاظ على الزجاجية للقائمة الجانبية ====== */
+#sidebarMenu {
+  background-color: rgba(128, 0, 128, 0.15) !important;    /* طبقة أرجواني فاتح */
+  backdrop-filter: blur(12px) saturate(150%) !important;    /* تمويه + تشبع أعلى */
+  -webkit-backdrop-filter: blur(12px) saturate(150%) !important; /* دعم سفاري */
+  border: 1px solid rgba(128, 0, 128, 0.3) !important;      /* إطار أرجواني خفيف */
+}
+
+/* لضمان بقاء اللمسة الأرجوانية في الوضع الليلي */
+html.dark-mode #sidebarMenu {
+  background-color: rgba(75, 0, 130, 0.2) !important;     /* أرجواني أغمق قليلًا */
+  border-color: rgba(75, 0, 130, 0.4) !important;
+}
+/* ===== جعل عناوين الأقسام في القائمة الجانبية بولد ===== */
+#sidebarMenu a,
+#sidebarMenu li,
+#sidebarMenu span,
+#sidebarMenu .nav-link {
+  font-weight: 900 !important;  /* 700 = bold */
+}
+
+
+
+
+
+
   </style>
   
   <!-- Firebase SDK -->
