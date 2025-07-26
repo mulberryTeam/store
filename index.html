@@ -3357,6 +3357,32 @@ body.sidebar-open #sidebarToggleBtn {
 }
 
 
+
+
+
+
+/* تعطيل الثلج على الحاسوب */
+
+  .snowfall {
+    display: none !important;
+  }
+
+
+
+/* تبسيط الفلاتر والظل */
+@media (min-width: 1024px) {
+  .gpd-section,
+  .category-btn,
+  .carousel-arrow {
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
+
+
+
   </style>
   
   <!-- Firebase SDK -->
@@ -3556,6 +3582,17 @@ function initBannerCarousel(urls) {
   
   <!-- Main Content -->
   <main>
+<!-- بداية Banner Carousel -->
+<div id="bannerCarousel" class="banner-carousel">
+<div class="slides-container" style="width:100%;height:100%;position:relative;">
+<div class="slides"></div>
+</div>
+<div class="dots"></div>
+</div>
+<!-- نهاية Banner Carousel -->
+
+
+
     <!-- Landing Section -->
     <section id="landingSection" class="gpd-section" data-anim-type="fadeIn">
       <div id="landing" style="position: relative; z-index: 2; padding: 60px; text-align: center;">
@@ -3578,14 +3615,7 @@ function initBannerCarousel(urls) {
 
 
   
-<!-- بداية Banner Carousel -->
-<div id="bannerCarousel" class="banner-carousel">
-<div class="slides-container" style="width:100%;height:100%;position:relative;">
-<div class="slides"></div>
-</div>
-<div class="dots"></div>
-</div>
-<!-- نهاية Banner Carousel -->
+
 
 
 
